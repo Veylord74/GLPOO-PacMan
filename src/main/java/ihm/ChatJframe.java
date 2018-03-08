@@ -19,9 +19,9 @@ import org.apache.log4j.chainsaw.Main;
 
 import com.github.javafaker.Faker;
 
-import fr.esiea.chat.domain.CatRace;
-import fr.esiea.chat.domain.Genre;
-import fr.esiea.chat.domain.SimpleChat;
+import fr.esiea.glpoo.domain.CatRace;
+import fr.esiea.glpoo.domain.Genre;
+import fr.esiea.glpoo.domain.SimpleChat;
 
 public class ChatJframe extends JFrame {
 
