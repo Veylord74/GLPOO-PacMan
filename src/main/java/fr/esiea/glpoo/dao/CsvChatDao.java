@@ -16,7 +16,8 @@ public class CsvChatDao implements ChatDao {
 	private boolean isFirst;
 
 	private List<String> lectureFichier() {
-		final String path = "C:\\Users\\thiba\\eclipse-workspace\\chat\\src\\test\\resources\\chats.csv";
+		//final String path = "C:\\Users\\thiba\\eclipse-workspace\\chat\\src\\test\\resources\\chats.csv";
+		final String path = "src/test/resources/chats.csv";
 		final List<String> lines = new ArrayList<>();
 		Scanner sc;
 		try {
