@@ -6,9 +6,9 @@ import fr.esiea.glpoo.dao.CsvTirageDao;
 
 public class CsvChatDaoTest extends AbstractChatDaoTest {
 
-	@Before
+	/*@Before
 	public void doBefore() {
 		dao = new CsvTirageDao();
-	}
+	}*/
 	
 }

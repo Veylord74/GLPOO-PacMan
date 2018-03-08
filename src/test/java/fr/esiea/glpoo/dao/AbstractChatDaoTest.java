@@ -11,7 +11,7 @@ import fr.esiea.glpoo.domain.Genre;
 
 public abstract class AbstractChatDaoTest {
 
-	protected CsvTirageDao dao;
+	/*protected CsvTirageDao dao;
 
 	@Test
 	public void testFindAllCats_With4Items() {
@@ -66,5 +66,5 @@ public abstract class AbstractChatDaoTest {
 
 		// Assert
 		Assert.assertEquals(expectedName, thirdName);
-	}
+	}*/
 }
