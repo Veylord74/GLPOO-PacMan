@@ -1,25 +1,25 @@
 package fr.esiea.glpoo.domain;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class SimpleTirage implements Tirage {
 	
-	private Date date;
+	private LocalDate date;
 	private int[] boules;
 	private int[] etoiles;
 	
-	public SimpleTirage(Date date, int[] boules, int[] etoiles) {
+	public SimpleTirage(LocalDate date, int[] boules, int[] etoiles) {
 		super();
 		this.date = date;
 		this.boules = boules;
 		this.etoiles = etoiles;
 	}
 
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 

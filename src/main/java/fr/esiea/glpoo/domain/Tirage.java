@@ -1,10 +1,10 @@
 package fr.esiea.glpoo.domain;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public interface Tirage {
 
-	Date getDate();
+	LocalDate getDate();
 	
 	int[] getBoules();
 
