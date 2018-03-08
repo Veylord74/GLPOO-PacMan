@@ -4,7 +4,7 @@ import java.util.List;
 
 import fr.esiea.glpoo.domain.Chat;
 
-public interface ChatDao {
+public interface TirageDao {
 
 	List<Chat> findAllCats();
 }

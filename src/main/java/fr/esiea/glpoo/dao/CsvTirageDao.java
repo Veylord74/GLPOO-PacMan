@@ -11,12 +11,11 @@ import fr.esiea.glpoo.domain.Chat;
 import fr.esiea.glpoo.domain.Genre;
 import fr.esiea.glpoo.domain.SimpleChat;
 
-public class CsvChatDao implements ChatDao {
+public class CsvTirageDao implements TirageDao {
 
 	private boolean isFirst;
 
 	private List<String> lectureFichier() {
-		//final String path = "C:\\Users\\thiba\\eclipse-workspace\\chat\\src\\test\\resources\\chats.csv";
 		final String path = "src/test/resources/chats.csv";
 		final List<String> lines = new ArrayList<>();
 		Scanner sc;

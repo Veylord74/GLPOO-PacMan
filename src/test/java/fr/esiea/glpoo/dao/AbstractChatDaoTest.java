@@ -5,13 +5,13 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
-import fr.esiea.glpoo.dao.CsvChatDao;
+import fr.esiea.glpoo.dao.CsvTirageDao;
 import fr.esiea.glpoo.domain.Chat;
 import fr.esiea.glpoo.domain.Genre;
 
 public abstract class AbstractChatDaoTest {
 
-	protected CsvChatDao dao;
+	protected CsvTirageDao dao;
 
 	@Test
 	public void testFindAllCats_With4Items() {

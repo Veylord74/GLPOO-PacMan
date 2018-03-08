@@ -8,7 +8,7 @@ import fr.esiea.glpoo.domain.Chat;
 import fr.esiea.glpoo.domain.Genre;
 import fr.esiea.glpoo.domain.SimpleChat;
 
-public class BidonChatDao implements ChatDao {
+public class BidonChatDao implements TirageDao {
 	
 	@Override
 	public List<Chat> findAllCats() {

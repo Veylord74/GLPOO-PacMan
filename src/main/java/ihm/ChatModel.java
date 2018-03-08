@@ -8,7 +8,7 @@ import javax.swing.table.AbstractTableModel;
 import org.apache.log4j.Logger;
 import org.apache.log4j.chainsaw.Main;
 
-import fr.esiea.glpoo.dao.CsvChatDao;
+import fr.esiea.glpoo.dao.CsvTirageDao;
 import fr.esiea.glpoo.domain.CatRace;
 import fr.esiea.glpoo.domain.Chat;
 import fr.esiea.glpoo.domain.Genre;
@@ -23,7 +23,7 @@ public class ChatModel extends AbstractTableModel {
 	public ChatModel() {
 		entetes = new String[] { "Name", "Age", "Colors", "Genre", "Race", "NbPaws" };
 		
-		CsvChatDao dao = new CsvChatDao();
+		CsvTirageDao dao = new CsvTirageDao();
 		chats = dao.findAllCats();
 	}
 
