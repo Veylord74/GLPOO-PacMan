@@ -17,6 +17,7 @@ public class CsvChatDao implements ChatDao {
 
 	private List<String> lectureFichier() {
 		//final String path = "C:\\Users\\thiba\\eclipse-workspace\\chat\\src\\test\\resources\\chats.csv";
+		//final String path = "src/main/resources/euromillions_4.csv";
 		final String path = "src/test/resources/chats.csv";
 		final List<String> lines = new ArrayList<>();
 		Scanner sc;
