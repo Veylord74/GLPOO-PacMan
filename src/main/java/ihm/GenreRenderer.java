@@ -6,7 +6,7 @@ import java.awt.Component;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
-import fr.esiea.chat.domain.Genre;
+import fr.esiea.glpoo.domain.Genre;
 
 public class GenreRenderer extends DefaultTableCellRenderer {
 
