@@ -1,3 +1,4 @@
+package fr.esiea.formes;
 
 public class SimpleForme implements Forme{
 		

@@ -1,4 +1,4 @@
-import fr.esiea.chat.domain.CatRace;
+package fr.esiea.formes;
 
 public enum FormeType {
 	triangle("vert","tri"), rectangle("rouge","rect"), cercle("jaune","cerc"), traine("blanc","trai");
