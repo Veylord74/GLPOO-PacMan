@@ -1,16 +1,22 @@
 package fr.esiea.glpoo.map;
 
 import fr.esiea.formes.Forme;
+import fr.esiea.glpoo.toolBox.IdGenerator;
 
 public class Map {
 	
-	int sizex;
-	int sizey;
-	
+	private int sizex;
+	private int sizey;
+	private IdGenerator idGenerator;
+	//x line
+	//y column
+		
 	Nodes mat[][];
 	
 	public Map(int sizex, int sizey)
 	{
+		idGenerator = new IdGenerator();
+
 		this.sizex = sizex;
 		this.sizey = sizey;
 		mat = new Nodes [sizex][sizey];
@@ -19,13 +25,44 @@ public class Map {
 	
 	void createMatrixNodes()
 	{
-		for (int i = 0; i < this.mat.length ; i++)
-			for(int j = 0; j < this.mat[0].length; j++)// TODO magic number need to be replaced
+		for (int x = 0; x < sizex ; x++)
+		{
+			for(int y = 0; y < sizey; y++)// TODO magic number 0 need to be replaced
 			{
 				//create nodes neighborhood null if none
-				//TODO refactor magic number as -1
-				mat[i][j] = new Nodes(i+1<this.mat.length ? i+1:-1, j+1<this.mat.length ? j+1:-1, i-1>=0 ? i-1:-1, j-1>=0 ? j-1:-1, i, j);
+				//TODO replace magic number  -1
+				
+				mat[x][y] = new Nodes((y+1<sizey ? y+(sizex*x)+1:-1), (x+1<sizex ? y+sizex*(x+1):-1), y+(sizex*x)-1, (y+(sizex*x)-sizex < 0 ? -1 : y+(sizex*x)-sizex) , x, y, idGenerator.getNextId());
 			}
+		}
+	}
+	
+	public void displayMapById()
+	{
+		for (int x = 0; x< sizex; x++)
+		{
+			String line = "";
+			for (int y = 0; y<sizey; y++)
+			{
+				line+=mat[x][y].getId();
+				line+=" ";
+			}
+			System.out.println(line);
+		}
+	}
+	
+	public void displayMapByNeighbor()
+	{
+		for (int x = 0; x< sizex; x++)
+		{
+			String line = "";
+			for (int y = 0; y<sizey; y++)
+			{
+				line+=mat[x][y].getNeighborCount();
+				line+=" ";
+			}
+			System.out.println(line);
+		}
 	}
 	
 	public Nodes getNodeById(int id)
@@ -41,6 +78,16 @@ public class Map {
 			}
 		}
 		return null;
+	}
+	
+	public Nodes getNodeByPos(int posX, int posY)
+	{
+		return mat[posX][posY];
+	}
+	
+	public Nodes[][] getMat()
+	{
+		return this.mat;
 	}
 	
 

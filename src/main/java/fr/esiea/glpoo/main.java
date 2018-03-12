@@ -9,6 +9,8 @@ import fr.esiea.glpoo.dao.TirageDao;
 import fr.esiea.glpoo.dao.CsvTirageDao;
 import fr.esiea.glpoo.domain.Chat;
 import fr.esiea.glpoo.domain.Tirage;
+import fr.esiea.glpoo.map.Map;
+import fr.esiea.glpoo.map.Nodes;
 import ihm.TirageJframe;
 
 public class main {
@@ -16,7 +18,15 @@ public class main {
 	private static final Logger log = Logger.getLogger(Main.class);
 	
 	public static void main(String[] args) {
-		log.info("Tirage Euro-million:");
+		System.out.println("mat");
+		Map map = new Map(1000,1000);
+		Nodes test = map.getNodeById(1200);
+		System.out.println(test.getPosX()+" "+(test.getPosY()));
+		System.out.println(test.getNeighborCount());
+		System.out.println(test.getNodeEast()+" "+(test.getNodeSouth())+" "+ test.getNodeWest()+" "+test.getNodeNorth());
+		map.displayMapByNeighbor();
+		
+		/*log.info("Tirage Euro-million:");
 		
 		final TirageDao dao = new CsvTirageDao();
 		final List<Tirage> tirages = dao.findAllTirages();
@@ -38,6 +48,7 @@ public class main {
 		//IHM
 		final TirageJframe chatJFrame = new TirageJframe();
 		chatJFrame.setVisible(true);
+		*/
 	}
 
 }
