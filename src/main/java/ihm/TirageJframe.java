@@ -23,38 +23,38 @@ import fr.esiea.glpoo.domain.CatRace;
 import fr.esiea.glpoo.domain.Genre;
 import fr.esiea.glpoo.domain.SimpleChat;
 
-public class ChatJframe extends JFrame {
+public class TirageJframe extends JFrame {
 
 	private static final Logger log = Logger.getLogger(Main.class);
-	ChatModel model = new ChatModel();
+	TirageModel model = new TirageModel();
 	final JTable tableau = new JTable(model);
 
-	public ChatJframe() {
-		setTitle("Cat Store");
+	public TirageJframe() {
+		setTitle("Tirages euro-milion");
 		setPreferredSize(new Dimension(600, 400));
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		tableau.setDefaultRenderer(Genre.class, new GenreRenderer());
+		//tableau.setDefaultRenderer(Genre.class, new GenreRenderer());
 		final JScrollPane scroll = new JScrollPane(tableau);
 
 		// getContentPane().add(tableau.getTableHeader(), BorderLayout.NORTH);
 		getContentPane().add(scroll, BorderLayout.CENTER);
 
-		Color blue = new Color(17, 44, 80);
+		/*Color blue = new Color(17, 44, 80);
 		final JPanel barreBoutons = new JPanel();
 		barreBoutons.setBackground(blue);
-		getContentPane().add(barreBoutons, BorderLayout.SOUTH);
+		getContentPane().add(barreBoutons, BorderLayout.SOUTH);*/
 
-		final JButton bouttonAjouter = new JButton(new AjouterLigneAction());
+		/*final JButton bouttonAjouter = new JButton(new AjouterLigneAction());
 		barreBoutons.add(bouttonAjouter);
 
 		final JButton bouttonSupprimer = new JButton(new SupprimerLigneAction());
-		barreBoutons.add(bouttonSupprimer);
+		barreBoutons.add(bouttonSupprimer);*/
 
 		pack();
 	}
 
-	private class AjouterLigneAction extends AbstractAction {
+	/*private class AjouterLigneAction extends AbstractAction {
 
 		public AjouterLigneAction() {
 			super("Ajouter");
@@ -74,9 +74,9 @@ public class ChatJframe extends JFrame {
 			model.ajouterChat(chat);
 		}
 
-	}
+	}*/
 
-	private class SupprimerLigneAction extends AbstractAction {
+	/*private class SupprimerLigneAction extends AbstractAction {
 
 		public SupprimerLigneAction() {
 			super("Supprimer");
@@ -93,6 +93,6 @@ public class ChatJframe extends JFrame {
 			}
 		}
 
-	}
+	}*/
 
 }

@@ -1,5 +1,6 @@
 package ihm;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,23 +9,24 @@ import javax.swing.table.AbstractTableModel;
 import org.apache.log4j.Logger;
 import org.apache.log4j.chainsaw.Main;
 
-import fr.esiea.glpoo.dao.CsvChatDao;
+import fr.esiea.glpoo.dao.CsvTirageDao;
 import fr.esiea.glpoo.domain.CatRace;
 import fr.esiea.glpoo.domain.Chat;
 import fr.esiea.glpoo.domain.Genre;
 import fr.esiea.glpoo.domain.SimpleChat;
+import fr.esiea.glpoo.domain.Tirage;
 
-public class ChatModel extends AbstractTableModel {
+public class TirageModel extends AbstractTableModel {
 
 	private final String[] entetes;
-	private final List<Chat> chats;
+	private final List<Tirage> tirages;
 	private static final Logger log = Logger.getLogger(Main.class);
 
-	public ChatModel() {
-		entetes = new String[] { "Name", "Age", "Colors", "Genre", "Race", "NbPaws" };
+	public TirageModel() {
+		entetes = new String[] { "Date tirage", "Boule 1", "Boule 2", "Boule 3", "Boule 4", "Boule 5", "étoile 1", "étoile 2" };
 		
-		CsvChatDao dao = new CsvChatDao();
-		chats = dao.findAllCats();
+		CsvTirageDao dao = new CsvTirageDao();
+		tirages = dao.findAllTirages();
 	}
 
 	@Override
@@ -34,26 +36,30 @@ public class ChatModel extends AbstractTableModel {
 
 	@Override
 	public int getRowCount() {
-		return chats.size();
+		return tirages.size();
 	}
 
 	@Override
 	public Object getValueAt(int arg0, int arg1) {
 		
-		final Chat cat = chats.get(arg0);
+		final Tirage tirage = tirages.get(arg0);
 		switch(arg1) {
 		case 0:
-			return cat.getName();
+			return tirage.getDate();
 		case 1:
-			return cat.getAge();
+			return tirage.getBoules()[0];
 		case 2:
-			return cat.getColors();
+			return tirage.getBoules()[1];
 		case 3:
-			return cat.getGenre();
+			return tirage.getBoules()[2];
 		case 4:
-			return cat.getRace();
+			return tirage.getBoules()[3];
 		case 5:
-			return cat.getNbPaws();
+			return tirage.getBoules()[4];
+		case 6:
+			return tirage.getEtoiles()[0];
+		case 7:
+			return tirage.getEtoiles()[1];
 		default:
 			throw new IllegalArgumentException();
 		}
@@ -69,21 +75,21 @@ public class ChatModel extends AbstractTableModel {
 		
 		switch(columnIndex) {
 		case 0:
-		case 2:
-			return String.class;
+			return LocalDate.class;
 		case 1:
-		case 5:
-			return Integer.class;
+		case 2:
 		case 3:
-			return Genre.class;
 		case 4:
-			return CatRace.class;
+		case 5:
+		case 6:
+		case 7:
+			return Integer.class;
 		default:
 			throw new IllegalArgumentException();
 		}
 	}
 	
-	public void ajouterChat(final Chat chat) {
+	/*public void ajouterChat(final Chat chat) {
 		log.debug("ici AjouterChat");
 		
 		chats.add(chat);
@@ -97,6 +103,6 @@ public class ChatModel extends AbstractTableModel {
 		chats.remove(position);
 		
 		fireTableRowsDeleted(position, position);
-	}
+	}*/
 	
 }

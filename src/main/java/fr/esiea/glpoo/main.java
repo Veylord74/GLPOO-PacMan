@@ -5,11 +5,13 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.apache.log4j.chainsaw.Main;
 
-import fr.esiea.glpoo.dao.ChatDao;
-import fr.esiea.glpoo.dao.CsvChatDao;
+import fr.esiea.glpoo.dao.TirageDao;
+import fr.esiea.glpoo.dao.CsvTirageDao;
 import fr.esiea.glpoo.domain.Chat;
-import ihm.ChatJframe;
+
 import ihm.MenuJFrame;
+import fr.esiea.glpoo.domain.Tirage;
+import ihm.TirageJframe;
 
 public class main {
 
@@ -27,6 +29,28 @@ public class main {
 		menu.setVisible(true);
 		
 		
+		log.info("Tirage Euro-million:");
+		
+		final TirageDao dao = new CsvTirageDao();
+		final List<Tirage> tirages = dao.findAllTirages();
+		
+		for(final Tirage tirage : tirages) {
+			int[] boules = tirage.getBoules();
+			int[] etoiles = tirage.getEtoiles();
+			String boule = "";
+			String etoile = "";
+			for(int i = 0; i<5; i++) {
+				boule += boules[i] + " ";
+			}
+			for(int i = 0; i<2; i++) {
+				etoile += etoiles[i] + " ";
+			}
+			log.debug("* Tirage du " + tirage.getDate() + ": - Boules: " + boule + " - Etoiles: " + etoile);
+		}
+		
+		//IHM
+		final TirageJframe chatJFrame = new TirageJframe();
+		chatJFrame.setVisible(true);
 	}
 
 }
