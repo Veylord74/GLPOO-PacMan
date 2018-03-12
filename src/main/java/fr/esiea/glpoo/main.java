@@ -9,24 +9,24 @@ import fr.esiea.glpoo.dao.ChatDao;
 import fr.esiea.glpoo.dao.CsvChatDao;
 import fr.esiea.glpoo.domain.Chat;
 import ihm.ChatJframe;
+import ihm.MenuJFrame;
 
 public class main {
 
 	private static final Logger log = Logger.getLogger(Main.class);
 	
 	public static void main(String[] args) {
-		log.info("My cat list:");
 		
-		final ChatDao dao = new CsvChatDao();
-		final List<Chat> cats = dao.findAllCats();
-		
-		for(final Chat cat : cats) {
-			log.debug("* " + cat.getName() + " - " + cat.getRace());
-		}
+		log.info("Start of new session - User opened PacMan program");
 		
 		//IHM
-		final ChatJframe chatJFrame = new ChatJframe();
-		chatJFrame.setVisible(true);
+		
+		final MenuJFrame menu = new MenuJFrame();
+		// fullscreen (disable "Size of window" section in MenuJFrame to use fullscreen)
+		menu.setExtendedState(MenuJFrame.MAXIMIZED_BOTH);
+		menu.setVisible(true);
+		
+		
 	}
 
 }
