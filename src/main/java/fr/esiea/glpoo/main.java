@@ -6,6 +6,8 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.chainsaw.Main;
 
 import fr.esiea.glpoo.dao.TirageDao;
+import fr.esiea.formes.FormeType;
+import fr.esiea.formes.SimpleForme;
 import fr.esiea.glpoo.dao.CsvTirageDao;
 import fr.esiea.glpoo.domain.Chat;
 import fr.esiea.glpoo.domain.Tirage;
@@ -19,12 +21,11 @@ public class main {
 	
 	public static void main(String[] args) {
 		System.out.println("mat");
-		Map map = new Map(1000,1000);
-		Nodes test = map.getNodeById(1200);
-		System.out.println(test.getPosX()+" "+(test.getPosY()));
-		System.out.println(test.getNeighborCount());
-		System.out.println(test.getNodeEast()+" "+(test.getNodeSouth())+" "+ test.getNodeWest()+" "+test.getNodeNorth());
-		map.displayMapByNeighbor();
+		Map map = new Map(10,10);
+
+		SimpleForme form = new SimpleForme("lel", 1, 2, FormeType.rectangle, 3, 4);
+		form.createFormOnMap(map);
+		map.displayMapByColor();
 		
 		/*log.info("Tirage Euro-million:");
 		

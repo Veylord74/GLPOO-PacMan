@@ -20,7 +20,7 @@ public class Nodes {
 	
 	private Couleur couleur;
 	//!!!!!! possible magic number -1 for no neighbor
-	Nodes(int nodeEast, int nodeSouth, int nodeWest, int nodeNorth, int posX, int posY, int id)
+	Nodes(int nodeEast, int nodeSouth, int nodeWest, int nodeNorth, int posX, int posY, int id, Couleur couleur)
 	{
 
 		this.nodeEast = nodeEast;
@@ -31,6 +31,7 @@ public class Nodes {
 		this.posX = posX;
 		this.posY = posY;
 		this.id = id;
+		this.couleur = couleur;
 
 	}
 	
@@ -72,6 +73,11 @@ public class Nodes {
 	public Couleur getColor()
 	{
 		return couleur;
+	}
+	
+	public void setColor(Couleur color)
+	{
+		this.couleur = color;
 	}
 	
 	public Status getStatus()

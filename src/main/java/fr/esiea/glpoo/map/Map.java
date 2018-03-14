@@ -1,5 +1,6 @@
 package fr.esiea.glpoo.map;
 
+import fr.esiea.formes.Couleur;
 import fr.esiea.formes.Forme;
 import fr.esiea.glpoo.toolBox.IdGenerator;
 
@@ -32,7 +33,8 @@ public class Map {
 				//create nodes neighborhood null if none
 				//TODO replace magic number  -1
 				
-				mat[x][y] = new Nodes((y+1<sizey ? y+(sizex*x)+1:-1), (x+1<sizex ? y+sizex*(x+1):-1), y+(sizex*x)-1, (y+(sizex*x)-sizex < 0 ? -1 : y+(sizex*x)-sizex) , x, y, idGenerator.getNextId());
+				mat[x][y] = new Nodes((y+1<sizey ? y+(sizex*x)+1:-1), (x+1<sizex ? y+sizex*(x+1):-1), y+(sizex*x)-1, (y+(sizex*x)-sizex < 0 ? -1 : y+(sizex*x)-sizex) ,
+						x, y, idGenerator.getNextId(), Couleur.blanc);
 			}
 		}
 	}
@@ -59,6 +61,20 @@ public class Map {
 			for (int y = 0; y<sizey; y++)
 			{
 				line+=mat[x][y].getNeighborCount();
+				line+=" ";
+			}
+			System.out.println(line);
+		}
+	}
+	
+	public void displayMapByColor()
+	{
+		for (int x = 0; x< sizex; x++)
+		{
+			String line = "";
+			for (int y = 0; y<sizey; y++)
+			{
+				line+=mat[x][y].getColor().getAlias();
 				line+=" ";
 			}
 			System.out.println(line);
