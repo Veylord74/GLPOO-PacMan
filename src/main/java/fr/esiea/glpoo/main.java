@@ -10,6 +10,8 @@ import fr.esiea.formes.FormeType;
 import fr.esiea.formes.SimpleForme;
 import fr.esiea.glpoo.dao.CsvTirageDao;
 import fr.esiea.glpoo.domain.Chat;
+
+import ihm.MenuJFrame;
 import fr.esiea.glpoo.domain.Tirage;
 import fr.esiea.glpoo.map.Map;
 import fr.esiea.glpoo.map.Nodes;
@@ -20,6 +22,18 @@ public class main {
 	private static final Logger log = Logger.getLogger(Main.class);
 	
 	public static void main(String[] args) {
+		
+		log.info("Start of new session - User opened PacMan program");
+		
+		//IHM
+		
+		final MenuJFrame menu = new MenuJFrame();
+		// fullscreen (disable "Size of window" section in MenuJFrame to use fullscreen)
+		menu.setExtendedState(MenuJFrame.MAXIMIZED_BOTH);
+		menu.setVisible(true);
+		
+		
+		log.info("Tirage Euro-million:");
 		System.out.println("mat");
 		Map map = new Map(10,10);
 
