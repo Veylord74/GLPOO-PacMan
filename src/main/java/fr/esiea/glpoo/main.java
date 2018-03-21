@@ -34,7 +34,6 @@ public class main {
 		
 		//IHM
 		
-		/*final MenuJFrame menu = new MenuJFrame();
 		final MenuJFrame menu = new MenuJFrame();
 		// fullscreen (disable "Size of window" section in MenuJFrame to use fullscreen)
 		menu.setExtendedState(MenuJFrame.MAXIMIZED_BOTH);
@@ -45,7 +44,7 @@ public class main {
 		System.out.println("mat");
 		Map map = new Map(10,10);
 
-		SimpleForme form = new SimpleForme("lel", 1, 2, FormeType.rectangle, 3, 4);
+		/*SimpleForme form = new SimpleForme("lel", 1, 2, FormeType.rectangle, 3, 4);
 		form.createFormOnMap(map);
 		map.displayMapByColor();*/
 		

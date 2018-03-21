@@ -10,8 +10,9 @@ public class Fantome implements Personnage {
 	private int directionY;
 	private boolean collision;
 	private String color;
+	private boolean chasseur;
 
-	public Fantome(int positionX, int positionY, int directionX, int directionY, boolean collision, String color) {
+	public Fantome(int positionX, int positionY, int directionX, int directionY, boolean collision, String color, boolean chasseur) {
 		super();
 		this.positionX = positionX;
 		this.positionY = positionY;
@@ -19,8 +20,17 @@ public class Fantome implements Personnage {
 		this.directionY = directionY;
 		this.collision = collision;
 		this.color = color;
+		this.chasseur = true;
 	}
 
+	public boolean getChasseur() {
+		return chasseur;
+	}
+	
+	public void setChasseur(boolean chasseur) {
+		this.chasseur = chasseur;
+	}
+	
 	public int getPositionX() {
 		return positionX;
 	}

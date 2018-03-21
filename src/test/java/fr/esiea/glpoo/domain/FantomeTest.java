@@ -17,7 +17,7 @@ public class FantomeTest {
 	private int directionY;
 	private boolean collision;
 	private String color;
-
+	private boolean chasseur;
 	@Before
 	public void initialize() {
 		positionX = 43;
@@ -26,7 +26,8 @@ public class FantomeTest {
 		directionY = 7;
 		collision = true;
 		color = "red";
-		Fantome = new Fantome(positionX, positionY, directionX, directionY, collision, color);
+		Fantome = new Fantome(positionX, positionY, directionX, directionY, collision, color, chasseur);
+		chasseur = true;
 	}
 
 	@Test
@@ -38,6 +39,8 @@ public class FantomeTest {
 		int expectedDirectionY = 7;
 		boolean expectedCollision = true;
 		String expectedColor = "red";
+		boolean expectedChasseur = true;
+		
 
 		// Act
 
@@ -48,6 +51,7 @@ public class FantomeTest {
 		Assert.assertEquals(expectedDirectionY, Fantome.getDirectionY());
 		Assert.assertEquals(expectedCollision, Fantome.getCollision());
 		Assert.assertEquals(expectedColor, Fantome.getColor());
+		Assert.assertEquals(expectedChasseur, Fantome.getChasseur());
 	}
 
 	@Test
@@ -58,6 +62,7 @@ public class FantomeTest {
 		int expectedDirectoinX = 92;
 		int expectedDirectionY = 2;
 		boolean expectedCollision = false;
+		boolean expectedChasseur = false;
 
 		// Act
 		Fantome.setPositionX(28);
@@ -65,6 +70,7 @@ public class FantomeTest {
 		Fantome.setDirectionX(92);
 		Fantome.setDirectionY(2);
 		Fantome.setCollision(false);
+		Fantome.setChasseur(false);
 
 		// Assert
 		Assert.assertEquals(expectedPositionX, Fantome.getPositionX());
@@ -72,5 +78,6 @@ public class FantomeTest {
 		Assert.assertEquals(expectedDirectoinX, Fantome.getDirectionX());
 		Assert.assertEquals(expectedDirectionY, Fantome.getDirectionY());
 		Assert.assertEquals(expectedCollision, Fantome.getCollision());
+		Assert.assertEquals(expectedChasseur, Fantome.getChasseur());
 	}
 }

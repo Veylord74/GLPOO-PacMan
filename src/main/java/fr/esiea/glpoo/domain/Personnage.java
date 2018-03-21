@@ -14,4 +14,6 @@ public interface Personnage {
 
 	String getColor();
 
+	boolean getChasseur();
+	
 }

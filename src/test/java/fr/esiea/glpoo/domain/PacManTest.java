@@ -17,6 +17,7 @@ public class PacManTest {
 	private int directionY;
 	private boolean collision;
 	private String color;
+	private boolean chasseur;
 
 	@Before
 	public void initialize() {
@@ -26,7 +27,8 @@ public class PacManTest {
 		directionY = 42;
 		collision = false;
 		color = "yellow";
-		PacMan = new PacMan(positionX, positionY, directionX, directionY, collision, color);
+		PacMan = new PacMan(positionX, positionY, directionX, directionY, collision, color, chasseur);
+		chasseur = false;
 	}
 
 	@Test
@@ -38,6 +40,7 @@ public class PacManTest {
 		int expectedDirectionY = 42;
 		boolean expectedCollision = false;
 		String expectedColor = "yellow";
+		boolean expectedChasseur = false;
 
 		// Act
 
@@ -48,6 +51,7 @@ public class PacManTest {
 		Assert.assertEquals(expectedDirectionY, PacMan.getDirectionY());
 		Assert.assertEquals(expectedCollision, PacMan.getCollision());
 		Assert.assertEquals(expectedColor, PacMan.getColor());
+		Assert.assertEquals(expectedChasseur, PacMan.getChasseur());
 	}
 	
 	@Test
@@ -58,6 +62,7 @@ public class PacManTest {
 		int expectedDirectoinX = 47;
 		int expectedDirectionY = 26;
 		boolean expectedCollision = true;
+		boolean expectedChasseur = true;
 
 		// Act
 		PacMan.setPositionX(10);
@@ -65,6 +70,7 @@ public class PacManTest {
 		PacMan.setDirectionX(47);
 		PacMan.setDirectionY(26);
 		PacMan.setCollision(true);
+		PacMan.setChasseur(true);
 
 		// Assert
 		Assert.assertEquals(expectedPositionX, PacMan.getPositionX());
@@ -72,5 +78,6 @@ public class PacManTest {
 		Assert.assertEquals(expectedDirectoinX, PacMan.getDirectionX());
 		Assert.assertEquals(expectedDirectionY, PacMan.getDirectionY());
 		Assert.assertEquals(expectedCollision, PacMan.getCollision());
+		Assert.assertEquals(expectedChasseur, PacMan.getChasseur());
 	}
 }

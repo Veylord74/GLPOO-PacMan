@@ -10,8 +10,10 @@ public class PacMan implements Personnage {
 	private int directionY;
 	private boolean collision;
 	private String color;
+	private boolean chasseur;
+	
 
-	public PacMan(int positionX, int positionY, int directionX, int directionY, boolean collision, String color) {
+	public PacMan(int positionX, int positionY, int directionX, int directionY, boolean collision, String color, boolean chasseur) {
 		super();
 		this.positionX = positionX;
 		this.positionY = positionY;
@@ -19,8 +21,17 @@ public class PacMan implements Personnage {
 		this.directionY = directionY;
 		this.collision = collision;
 		this.color = "yellow";
+		this.chasseur = false;
 	}
 
+	public boolean getChasseur() {
+		return chasseur;
+	}
+	
+	public void setChasseur(boolean chasseur) {
+		this.chasseur = chasseur;
+	}
+		
 	public int getPositionX() {
 		return positionX;
 	}
@@ -64,5 +75,7 @@ public class PacMan implements Personnage {
 	public String getColor() {
 		return "yellow";
 	}
+	
+	
 
 }
