@@ -32,7 +32,7 @@ public class main {
 		menu.setVisible(true);
 		
 		
-		log.info("Tirage Euro-million:");
+		log.debug("Tirage Euro-million:");
 		System.out.println("mat");
 		Map map = new Map(10,10);
 
@@ -40,28 +40,7 @@ public class main {
 		form.createFormOnMap(map);
 		map.displayMapByColor();
 		
-		log.info("Tirage Euro-million:");
 		
-		final TirageDao dao = new CsvTirageDao();
-		final List<Tirage> tirages = dao.findAllTirages();
-		
-		for(final Tirage tirage : tirages) {
-			int[] boules = tirage.getBoules();
-			int[] etoiles = tirage.getEtoiles();
-			String boule = "";
-			String etoile = "";
-			for(int i = 0; i<5; i++) {
-				boule += boules[i] + " ";
-			}
-			for(int i = 0; i<2; i++) {
-				etoile += etoiles[i] + " ";
-			}
-			log.debug("* Tirage du " + tirage.getDate() + ": - Boules: " + boule + " - Etoiles: " + etoile);
-		}
-		
-		//IHM
-		final TirageJframe chatJFrame = new TirageJframe();
-		chatJFrame.setVisible(true);
 		
 	}
 

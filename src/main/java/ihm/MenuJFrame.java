@@ -3,11 +3,17 @@ package ihm;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.net.URL;
+import java.util.List;
 import java.util.Random;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import org.apache.log4j.Logger;
+
+import fr.esiea.glpoo.dao.CsvTirageDao;
+import fr.esiea.glpoo.dao.TirageDao;
+import fr.esiea.glpoo.domain.Tirage;
 
 public class MenuJFrame extends JFrame {
 	
@@ -52,17 +58,33 @@ public class MenuJFrame extends JFrame {
 			ImagePanel imagePanel = new ImagePanel(image);
 			getContentPane().add(imagePanel);
 			
-			// Buttons play / help
+			// Button pannel
 			final JPanel menuButton = new JPanel();
 			Color black = new Color(0, 0, 0);
 			menuButton.setBackground(black);
 			getContentPane().add(menuButton, BorderLayout.SOUTH);
 			
+			// Images for the buttons backgrounds
+			Image img = Toolkit.getDefaultToolkit().getImage("src/main/resources/bkgrndBtn.png");
+			
+			//buttons
 			final JButton bouttonPlay = new JButton(new PlayAction());
+			bouttonPlay.setIcon(new ImageIcon(img));
+			bouttonPlay.setBackground(null);
+			bouttonPlay.setBorder(null);
 			menuButton.add(bouttonPlay);
 
 			final JButton bouttonHelp = new JButton(new HelpAction());
+			bouttonHelp.setIcon(new ImageIcon(img));
+			bouttonHelp.setBackground(null);
+			bouttonHelp.setBorder(null);
 			menuButton.add(bouttonHelp);
+			
+			final JButton bouttonResults = new JButton(new ResultsAction());
+			bouttonResults.setIcon(new ImageIcon(img));
+			bouttonResults.setBackground(null);
+			bouttonResults.setBorder(null);
+			menuButton.add(bouttonResults);
 			
 			
 			pack();
@@ -111,5 +133,44 @@ public class HelpAction extends AbstractAction{
 		}
 	}
 	
+public class ResultsAction extends AbstractAction{
+	
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+
+		log.info("Action performed - LOTTERY RESULTS");
+
+		log.debug("Tirage Euro-million:");
+		
+		final TirageDao dao = new CsvTirageDao();
+		final List<Tirage> tirages = dao.findAllTirages();
+		
+		for(final Tirage tirage : tirages) {
+			int[] boules = tirage.getBoules();
+			int[] etoiles = tirage.getEtoiles();
+			String boule = "";
+			String etoile = "";
+			for(int i = 0; i<5; i++) {
+				boule += boules[i] + " ";
+			}
+			for(int i = 0; i<2; i++) {
+				etoile += etoiles[i] + " ";
+			}
+			log.debug("* Tirage du " + tirage.getDate() + ": - Boules: " + boule + " - Etoiles: " + etoile);
+		}
+		
+		//IHM
+		final TirageJframe chatJFrame = new TirageJframe();
+		chatJFrame.setVisible(true);
+		
+
+	}
+
+	public ResultsAction() {
+
+		super("LOTTERY RESULTS");
+
+	}
+}
 
 }
