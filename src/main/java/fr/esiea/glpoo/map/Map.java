@@ -1,7 +1,12 @@
 package fr.esiea.glpoo.map;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.esiea.formes.Couleur;
 import fr.esiea.formes.Forme;
+import fr.esiea.formes.FormeType;
+import fr.esiea.formes.SimpleForme;
 import fr.esiea.glpoo.toolBox.IdGenerator;
 
 public class Map {
@@ -9,6 +14,7 @@ public class Map {
 	private int sizex;
 	private int sizey;
 	private IdGenerator idGenerator;
+	List<SimpleForme> listFormes;
 	//x line
 	//y column
 		
@@ -17,7 +23,7 @@ public class Map {
 	public Map(int sizex, int sizey)
 	{
 		idGenerator = new IdGenerator();
-
+		listFormes = new ArrayList<SimpleForme>();
 		this.sizex = sizex;
 		this.sizey = sizey;
 		mat = new Nodes [sizex][sizey];
@@ -37,6 +43,13 @@ public class Map {
 						x, y, idGenerator.getNextId(), Couleur.blanc);
 			}
 		}
+	}
+	
+	public void addForme(int positionx, int positiony, FormeType formeType, int positionx1, int positiony1)
+	{
+		SimpleForme forme = new SimpleForme(idGenerator.getNextId(), positionx, positiony, formeType, positionx1, positiony1);
+		forme.createFormOnMap(this);
+		this.listFormes.add(forme);
 	}
 	
 	public void displayMapById()
@@ -106,5 +119,14 @@ public class Map {
 		return this.mat;
 	}
 	
+	public int getSizex()
+	{
+		return sizex;
+	}
+	
+	public int getSizey()
+	{
+		return sizey;
+	}
 
 }

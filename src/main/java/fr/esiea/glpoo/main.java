@@ -24,10 +24,19 @@ public class main {
 	public static void main(String[] args) {
 		
 		log.info("Start of new session - User opened PacMan program");
+		int positionx = 5;
+		int positionx1 = 3;
+		int positiony = 5;
+		int positiony1 = 3;
+		
+Map map = new Map(10, 10);
+		map.addForme(positionx, positiony, FormeType.cercle, positionx1, positiony1);
+		map.displayMapByColor();
+		
 		
 		//IHM
 		
-		final MenuJFrame menu = new MenuJFrame();
+		/*final MenuJFrame menu = new MenuJFrame();
 		// fullscreen (disable "Size of window" section in MenuJFrame to use fullscreen)
 		menu.setExtendedState(MenuJFrame.MAXIMIZED_BOTH);
 		menu.setVisible(true);
@@ -39,7 +48,7 @@ public class main {
 
 		SimpleForme form = new SimpleForme("lel", 1, 2, FormeType.rectangle, 3, 4);
 		form.createFormOnMap(map);
-		map.displayMapByColor();
+		map.displayMapByColor();*/
 		
 		/*log.info("Tirage Euro-million:");
 		
