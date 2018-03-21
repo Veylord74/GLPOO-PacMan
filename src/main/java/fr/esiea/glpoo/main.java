@@ -23,6 +23,7 @@ public class main {
 	
 	public static void main(String[] args) {
 		
+		System.out.println("Essaie dépot");
 		log.info("Start of new session - User opened PacMan program");
 		int positionx = 5;
 		int positionx1 = 3;
