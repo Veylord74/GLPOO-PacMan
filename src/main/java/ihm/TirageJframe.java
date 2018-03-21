@@ -32,7 +32,8 @@ public class TirageJframe extends JFrame {
 	public TirageJframe() {
 		setTitle("Tirages euro-milion");
 		setPreferredSize(new Dimension(600, 400));
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		//setDefaultCloseOperation(EXIT_ON_CLOSE); //exits app if press the close cross
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE); //closes the JFrame only
 
 		//tableau.setDefaultRenderer(Genre.class, new GenreRenderer());
 		final JScrollPane scroll = new JScrollPane(tableau);
