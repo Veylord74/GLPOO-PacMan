@@ -26,7 +26,6 @@ public class main {
 		log.info("Start of new session - User opened PacMan program");
 		
 		//IHM
-		
 		final MenuJFrame menu = new MenuJFrame();
 		// fullscreen (disable "Size of window" section in MenuJFrame to use fullscreen)
 		menu.setExtendedState(MenuJFrame.MAXIMIZED_BOTH);
@@ -41,7 +40,7 @@ public class main {
 		form.createFormOnMap(map);
 		map.displayMapByColor();
 		
-		/*log.info("Tirage Euro-million:");
+		log.info("Tirage Euro-million:");
 		
 		final TirageDao dao = new CsvTirageDao();
 		final List<Tirage> tirages = dao.findAllTirages();
@@ -63,7 +62,7 @@ public class main {
 		//IHM
 		final TirageJframe chatJFrame = new TirageJframe();
 		chatJFrame.setVisible(true);
-		*/
+		
 	}
 
 }
