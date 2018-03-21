@@ -29,18 +29,12 @@ public class main {
 		int positiony = 5;
 		int positiony1 = 3;
 		
-Map map = new Map(10, 10);
-		map.addForme(positionx, positiony, FormeType.cercle, positionx1, positiony1);
-		map.displayMapByColor();
 		
 		
 		//IHM
-<<<<<<< HEAD
 		
 		/*final MenuJFrame menu = new MenuJFrame();
-=======
 		final MenuJFrame menu = new MenuJFrame();
->>>>>>> 7da2e1f4026051d3134e5c43054e0b23ee1f1b04
 		// fullscreen (disable "Size of window" section in MenuJFrame to use fullscreen)
 		menu.setExtendedState(MenuJFrame.MAXIMIZED_BOTH);
 		menu.setVisible(true);

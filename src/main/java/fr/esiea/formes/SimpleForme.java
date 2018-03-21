@@ -65,7 +65,7 @@ public class SimpleForme implements Forme{
 		}
 
 		@Override
-		public int getName() {
+		public int getId() {
 			return this.id;
 		}
 
