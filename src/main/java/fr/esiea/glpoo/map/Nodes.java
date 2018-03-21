@@ -5,10 +5,7 @@ import fr.esiea.glpoo.toolBox.IdGenerator;
 
 public class Nodes {
 	
-	//voisins
-	private static IdGenerator idGenerator = new IdGenerator();
-	
-	
+	//voisins	
 	private int nodeEast;
 	private int nodeSouth;
 	private int nodeWest;
@@ -23,8 +20,9 @@ public class Nodes {
 	
 	private Couleur couleur;
 	//!!!!!! possible magic number -1 for no neighbor
-	Nodes(int nodesEast, int nodeSouth, int nodeWest, int nodeNorth, int posX, int posY)
+	Nodes(int nodeEast, int nodeSouth, int nodeWest, int nodeNorth, int posX, int posY, int id, Couleur couleur)
 	{
+
 		this.nodeEast = nodeEast;
 		this.nodeSouth = nodeSouth;
 		this.nodeWest = nodeWest;
@@ -32,7 +30,24 @@ public class Nodes {
 		
 		this.posX = posX;
 		this.posY = posY;
-		this.id = idGenerator.getNextId();
+		this.id = id;
+		this.couleur = couleur;
+
+	}
+	
+	public int getNeighborCount()
+	{
+		return ((getNodeEast()==-1 ? 0:1) + (getNodeNorth()==-1 ? 0:1  )+ (getNodeSouth()==-1 ? 0:1 )+ (getNodeWest()==-1 ? 0:1));
+	}
+	
+	public int getPosX()
+	{
+		return posX;
+	}
+	
+	public int getPosY()
+	{
+		return posY;
 	}
 	
 	public int getNodeEast()
@@ -58,6 +73,11 @@ public class Nodes {
 	public Couleur getColor()
 	{
 		return couleur;
+	}
+	
+	public void setColor(Couleur color)
+	{
+		this.couleur = color;
 	}
 	
 	public Status getStatus()

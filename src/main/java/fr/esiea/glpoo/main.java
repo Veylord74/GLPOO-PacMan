@@ -6,11 +6,15 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.chainsaw.Main;
 
 import fr.esiea.glpoo.dao.TirageDao;
+import fr.esiea.formes.FormeType;
+import fr.esiea.formes.SimpleForme;
 import fr.esiea.glpoo.dao.CsvTirageDao;
 import fr.esiea.glpoo.domain.Chat;
 
 import ihm.MenuJFrame;
 import fr.esiea.glpoo.domain.Tirage;
+import fr.esiea.glpoo.map.Map;
+import fr.esiea.glpoo.map.Nodes;
 import ihm.TirageJframe;
 
 public class main {
@@ -30,6 +34,14 @@ public class main {
 		
 		
 		log.info("Tirage Euro-million:");
+		System.out.println("mat");
+		Map map = new Map(10,10);
+
+		SimpleForme form = new SimpleForme("lel", 1, 2, FormeType.rectangle, 3, 4);
+		form.createFormOnMap(map);
+		map.displayMapByColor();
+		
+		/*log.info("Tirage Euro-million:");
 		
 		final TirageDao dao = new CsvTirageDao();
 		final List<Tirage> tirages = dao.findAllTirages();
@@ -51,6 +63,7 @@ public class main {
 		//IHM
 		final TirageJframe chatJFrame = new TirageJframe();
 		chatJFrame.setVisible(true);
+		*/
 	}
 
 }

@@ -1,8 +1,10 @@
 package fr.esiea.formes;
 
+import fr.esiea.glpoo.map.Map;
+
 public enum FormeType {
 	triangle("vert","tri"), rectangle("rouge","rect"), cercle("jaune","cerc"), traine("blanc","trai");
-	Couleur couleur;
+	final Couleur couleur;
 	String code;
 	FormeType(String couleur, String code){
 		this.couleur = Couleur.valueOfByCode(couleur);
@@ -18,4 +20,5 @@ public enum FormeType {
 		}
 		throw new IllegalArgumentException("Cette forme n'existe pas");
 	}
+	
 }
