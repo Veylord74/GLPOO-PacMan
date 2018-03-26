@@ -65,15 +65,29 @@ public class SimpleForme implements Forme {
 			if (positionx1 - positionx != 0) {
 				float coef = (float)((float)(positiony1 - positiony) / (float)(positionx1 - positionx));
 				int posIni =  positiony1 - (int)(coef * positionx1);
-				for (int i = positionx; i <= positionx1; i++) {
-					int posY = (int) (coef * i + posIni);
-					for (int j = posY; j< Math.max((int)(coef*(i+1)+posIni),posY); j++)
-					{
-						if (map.existingNode(j, i)) {
-							map.getNodeByPos(j, i).setColor(FormeType.traine.couleur);
+				if(positionx < positionx1) {
+					for (int i = positionx; i <= positionx1; i++) {
+						int posY = (int) (coef * i + posIni);
+						for (int j = posY; j< Math.max((int)(coef*(i+1)+posIni),posY); j++)
+						{
+							if (map.existingNode(j, i)) {
+								map.getNodeByPos(j, i).setColor(FormeType.traine.couleur);
+							}
 						}
+						
 					}
-					
+				}
+				else {
+					for (int i = positionx; i >= positionx1; i--) {
+						int posY = (int) (coef * i + posIni);
+						for (int j = posY; j< Math.max((int)(coef*(i+1)+posIni),posY); j++)
+						{
+							if (map.existingNode(j, i)) {
+								map.getNodeByPos(j, i).setColor(FormeType.traine.couleur);
+							}
+						}
+						
+					}
 				}
 			} else {
 				if (positiony < positiony1) {
