@@ -2,7 +2,7 @@ package fr.esiea.formes;
 
 
 public enum Couleur {
-	Jaune("jaune","j"), Rouge("rouge","r"), Vert("vert","v"), blanc("blanc","b");
+	Jaune("jaune","j"), Rouge("rouge","r"), Vert("vert","."), blanc("blanc","*");
 	String code;
 	String alias;
 	private Couleur(String code, String alias)

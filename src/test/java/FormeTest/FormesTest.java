@@ -47,7 +47,7 @@ public class FormesTest {
 		int positiony = 5;
 		int positiony1 = 3;
 		FormeType formeType = FormeType.cercle;
-		map.addForme(positionx, positiony, formeType, positionx1, positiony1);
+		map.addFormeSimple(positionx, positiony, formeType, positionx1, positiony1);
 		map.displayMapByColor();
 		int testValue = 0;
 		for (int x = 0; x < 10; x++)
@@ -67,7 +67,7 @@ public class FormesTest {
 	public void testTraine(){
 	int ExcpectedGreenNodes = 10;
 	Map map = new Map(20,20);
-	map.addForme(2, 1, FormeType.traine, 9, 10);
+	map.addFormeSimple(2, 1, FormeType.traine, 9, 10);
 	map.displayMapByColor();
 	int testValue = 0;
 	for (int x = 0; x < map.getSizex(); x++)

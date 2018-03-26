@@ -1,5 +1,7 @@
 package fr.esiea.glpoo;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -15,6 +17,7 @@ import ihm.MenuJFrame;
 import fr.esiea.glpoo.domain.Tirage;
 import fr.esiea.glpoo.map.Map;
 import fr.esiea.glpoo.map.Nodes;
+import fr.esiea.glpoo.map.Position;
 import ihm.TirageJframe;
 
 public class main {
@@ -25,7 +28,12 @@ public class main {
 		
 		log.info("Start of new session - User opened PacMan program");
 		Map map = new Map(20,20);
-		map.addForme(9, 10, FormeType.traine, 2, 1);
+		Position pos1 = new Position(1,1);
+		Position pos2 = new Position (10,10);
+		Position pos3 = new Position(10,15);
+		List<Position> ListPos= Arrays.asList(pos1,pos2);
+		
+		map.addPolygone(ListPos);
 		map.displayMapByColor();
 		
 		

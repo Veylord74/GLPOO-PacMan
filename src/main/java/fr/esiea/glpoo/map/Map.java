@@ -6,6 +6,7 @@ import java.util.List;
 import fr.esiea.formes.Couleur;
 import fr.esiea.formes.Forme;
 import fr.esiea.formes.FormeType;
+import fr.esiea.formes.Polynomes;
 import fr.esiea.formes.SimpleForme;
 import fr.esiea.glpoo.toolBox.IdGenerator;
 
@@ -14,7 +15,7 @@ public class Map {
 	private int sizex;
 	private int sizey;
 	private IdGenerator idGenerator;
-	List<SimpleForme> listFormes;
+	List<Forme> listFormes;
 	//x abscisse croissant 
 	//y ordonné décroissant
 		
@@ -23,7 +24,7 @@ public class Map {
 	public Map(int sizex, int sizey)
 	{
 		idGenerator = new IdGenerator();
-		listFormes = new ArrayList<SimpleForme>();
+		listFormes = new ArrayList<Forme>();
 		this.sizex = sizex;
 		this.sizey = sizey;
 		mat = new Nodes [sizey][sizex];
@@ -45,12 +46,20 @@ public class Map {
 		}
 	}
 	
-	public void addForme(int positionx, int positiony, FormeType formeType, int positionx1, int positiony1)
+	public void addFormeSimple(int positionx, int positiony, FormeType formeType, int positionx1, int positiony1)
 	{
 		SimpleForme forme = new SimpleForme(idGenerator.getNextId(), positionx, positiony, formeType, positionx1, positiony1);
 		forme.createFormOnMap(this);
 		this.listFormes.add(forme);
 	}
+	
+	public void addPolygone(List<Position> posList)
+	{
+		Polynomes forme = new Polynomes(posList);
+		forme.createFormOnMap(this);
+		this.listFormes.add(forme);
+	}
+	
 	
 	public void displayMapById()
 	{
