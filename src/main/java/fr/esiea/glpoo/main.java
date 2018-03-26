@@ -24,8 +24,8 @@ public class main {
 	public static void main(String[] args) {
 		
 		log.info("Start of new session - User opened PacMan program");
-		Map map = new Map(10,10);
-		map.addForme(1, 2, FormeType.traine, 5, 6);
+		Map map = new Map(20,20);
+		map.addForme(2, 1, FormeType.traine, 9, 10);
 		map.displayMapByColor();
 		
 		

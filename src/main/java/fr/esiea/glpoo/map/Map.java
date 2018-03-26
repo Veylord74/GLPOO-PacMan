@@ -15,8 +15,8 @@ public class Map {
 	private int sizey;
 	private IdGenerator idGenerator;
 	List<SimpleForme> listFormes;
-	//x line
-	//y column
+	//x abscisse croissant 
+	//y ordonné décroissant
 		
 	Nodes mat[][];
 	
@@ -26,21 +26,21 @@ public class Map {
 		listFormes = new ArrayList<SimpleForme>();
 		this.sizex = sizex;
 		this.sizey = sizey;
-		mat = new Nodes [sizex][sizey];
+		mat = new Nodes [sizey][sizex];
 		createMatrixNodes();
 	}
 	
 	void createMatrixNodes()
 	{
-		for (int x = 0; x < sizex ; x++)
+		for (int y = 0; y < sizex ; y++)
 		{
-			for(int y = 0; y < sizey; y++)// TODO magic number 0 need to be replaced
+			for(int x = 0; x < sizey; x++)// TODO magic number 0 need to be replaced
 			{
 				//create nodes neighborhood null if none
 				//TODO replace magic number  -1
 				
-				mat[x][y] = new Nodes((y+1<sizey ? y+(sizex*x)+1:-1), (x+1<sizex ? y+sizex*(x+1):-1), y+(sizex*x)-1, (y+(sizex*x)-sizex < 0 ? -1 : y+(sizex*x)-sizex) ,
-						x, y, idGenerator.getNextId(), Couleur.blanc);
+				mat[y][x] = new Nodes((x+1<sizex ? x+(sizey*y)+1:-1), (y+1<sizey ? x+sizey*(y+1):-1), x+(sizey*y)-1, (x+(sizey*y)-sizey < 0 ? -1 : x+(sizex*y)-sizey) ,
+						y, x, idGenerator.getNextId(), Couleur.blanc);
 			}
 		}
 	}
@@ -54,12 +54,12 @@ public class Map {
 	
 	public void displayMapById()
 	{
-		for (int x = 0; x< sizex; x++)
+		for (int y = 0; y< sizex; y++)
 		{
 			String line = "";
-			for (int y = 0; y<sizey; y++)
+			for (int x = 0; x<sizey; x++)
 			{
-				line+=mat[x][y].getId();
+				line+=mat[y][x].getId();
 				line+=" ";
 			}
 			System.out.println(line);
@@ -68,12 +68,12 @@ public class Map {
 	
 	public void displayMapByNeighbor()
 	{
-		for (int x = 0; x< sizex; x++)
+		for (int y = 0; y< sizex; y++)
 		{
 			String line = "";
-			for (int y = 0; y<sizey; y++)
+			for (int x = 0; x<sizey; x++)
 			{
-				line+=mat[x][y].getNeighborCount();
+				line+=mat[y][x].getNeighborCount();
 				line+=" ";
 			}
 			System.out.println(line);
@@ -82,12 +82,12 @@ public class Map {
 	
 	public void displayMapByColor()
 	{
-		for (int x = 0; x< sizex; x++)
+		for (int y = 0; y< sizey; y++)
 		{
 			String line = "";
-			for (int y = 0; y<sizey; y++)
+			for (int x = 0; x<sizex; x++)
 			{
-				line+=mat[x][y].getColor().getAlias();
+				line+=mat[y][x].getColor().getAlias();
 				line+=" ";
 			}
 			System.out.println(line);
@@ -96,24 +96,23 @@ public class Map {
 	
 	public Nodes getNodeById(int id)
 	{
-	for (int i = 0; i< sizex; i++)
+	for (int y = 0; y< sizex; y++)
 		{
-			for (int j = 0; j<sizey; j++)
+			for (int x = 0; x<sizey; x++)
 			{
-				if (id == mat[i][j].getId())
+				if (id == mat[y][x].getId())
 				{
-					return mat[i][j];
+					return mat[y][x];
 				}
 			}
 		}
 		return null;
 	}
 	
-	public boolean existingNode(int x, int y)
+	public boolean existingNode(int y, int x)
 	{
-		if(this.getNodeByPos(x, y)!=null)
+		if(this.getNodeByPos(y, x)!=null)
 		{
-			
 			return true;
 		}
 		return false;
@@ -128,13 +127,13 @@ public class Map {
 		return false;
 	}
 	
-	public Nodes getNodeByPos(int posX, int posY)
+	public Nodes getNodeByPos(int posY, int posX)
 	{
-		if (posX > this.getSizex() || posY >this.getSizey() || posY < 0 || posX < 0)
+		if (posX >= this.getSizex() || posY >=this.getSizey() || posY < 0 || posX < 0)
 		{
 			return null;
 		}
-		return mat[posX][posY];
+		return mat[posY][posX];
 	}
 	
 	public Nodes[][] getMat()

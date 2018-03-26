@@ -63,6 +63,27 @@ public class FormesTest {
 		Assert.assertEquals(ExcpectedYellowNodes, testValue);
 
 	}
-	
+	@Test
+	public void testTraine(){
+	int ExcpectedGreenNodes = 10;
+	Map map = new Map(20,20);
+	map.addForme(2, 1, FormeType.traine, 9, 10);
+	map.displayMapByColor();
+	int testValue = 0;
+	for (int x = 0; x < map.getSizex(); x++)
+	{
+		for (int y = 0; y < map.getSizey(); y++)
+		{
+			if (map.getNodeByPos(y, x).getColor().getAlias().equals(Couleur.Vert.getAlias()))
+			{
+				testValue++;
+			}
+		}
+	}
+	map.displayMapByColor();
+
+	Assert.assertEquals(ExcpectedGreenNodes, testValue);
+
+	}
 
 }
