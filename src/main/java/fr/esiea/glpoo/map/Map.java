@@ -109,8 +109,31 @@ public class Map {
 		return null;
 	}
 	
+	public boolean existingNode(int x, int y)
+	{
+		if(this.getNodeByPos(x, y)!=null)
+		{
+			
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean existingNode(int id)
+	{
+		if (this.getNodeById(id)!=null)
+		{
+			return true;
+		}
+		return false;
+	}
+	
 	public Nodes getNodeByPos(int posX, int posY)
 	{
+		if (posX > this.getSizex() || posY >this.getSizey() || posY < 0 || posX < 0)
+		{
+			return null;
+		}
 		return mat[posX][posY];
 	}
 	

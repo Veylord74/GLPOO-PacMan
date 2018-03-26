@@ -58,8 +58,26 @@ public class SimpleForme implements Forme{
 				break;
 						
 			case triangle:
+				for (int x = positionx; x < dist + positionx; x++)
+				{
+					for (int y = positiony; y < x+1; y++)
+					{
+						if (map.existingNode(x, y))
+						{
+							map.getNodeByPos(x, y).setColor(FormeType.triangle.couleur);;
+						}
+					}
+				}
+				break;
 				
 			case traine:
+				float coef = ((positionx1-positionx)/(positiony1-positiony));
+				int posIni = (int)(coef * positiony1)-positionx1;
+				
+				for(int i = positiony; i < dist+positiony; i++)
+				{
+					 map.getNodeByPos(i, (int)(coef*i+posIni)).setColor(FormeType.traine.couleur);
+				}
 				
 			}
 		}

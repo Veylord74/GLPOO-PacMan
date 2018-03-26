@@ -24,10 +24,9 @@ public class main {
 	public static void main(String[] args) {
 		
 		log.info("Start of new session - User opened PacMan program");
-		int positionx = 5;
-		int positionx1 = 3;
-		int positiony = 5;
-		int positiony1 = 3;
+		Map map = new Map(10,10);
+		map.addForme(1, 2, FormeType.traine, 5, 6);
+		map.displayMapByColor();
 		
 		
 		
