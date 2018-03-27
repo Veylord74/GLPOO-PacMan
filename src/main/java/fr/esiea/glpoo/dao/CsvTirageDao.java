@@ -7,12 +7,17 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
+
+import org.apache.log4j.Logger;
 
 import fr.esiea.glpoo.domain.SimpleTirage;
 import fr.esiea.glpoo.domain.Tirage;
+import ihm.MenuJFrame;
 
 public class CsvTirageDao implements TirageDao {
-
+	
+	private static final Logger log = Logger.getLogger(MenuJFrame.class);
 	private boolean isFirst;
 
 	private List<String> lectureFichier() {
@@ -84,6 +89,31 @@ public class CsvTirageDao implements TirageDao {
 
 		// return
 		return tirages;
+	}
+	
+	@Override
+	public Tirage findRandomTirage() {
+		
+		log.info("findRandomTirage - RANDOM LOTTERY RESULT");
+		log.debug("Tirage aléatoire Euro-million:");
+		
+		final Tirage randTirage;
+		final List<Tirage> tirages = findAllTirages();
+		int randomNum = ThreadLocalRandom.current().nextInt(0, tirages.size() + 1);
+		randTirage = tirages.get(randomNum);
+		int[] boules = randTirage.getBoules();
+		int[] etoiles = randTirage.getEtoiles();
+		String boule = "";
+		String etoile = "";
+		for(int i = 0; i<5; i++) {
+			boule += boules[i] + " ";
+		}
+		for(int i = 0; i<2; i++) {
+			etoile += etoiles[i] + " ";
+		}
+		log.debug("* Tirage du " + randTirage.getDate() + ": - Boules: " + boule + " - Etoiles: " + etoile);
+		
+		return randTirage;
 	}
 
 }

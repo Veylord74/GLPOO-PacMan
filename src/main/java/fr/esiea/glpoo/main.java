@@ -28,8 +28,10 @@ public class main {
 		map.addForme(9, 10, FormeType.traine, 2, 1);
 		map.displayMapByColor();
 		
+		final TirageDao dao = new CsvTirageDao();
+		final Tirage randTirage = dao.findRandomTirage();
 		
-		
+	
 		//IHM
 		
 		/*final MenuJFrame menu = new MenuJFrame();
