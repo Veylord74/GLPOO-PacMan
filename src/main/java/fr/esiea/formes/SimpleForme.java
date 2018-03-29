@@ -2,6 +2,7 @@ package fr.esiea.formes;
 
 import fr.esiea.glpoo.map.Map;
 import fr.esiea.glpoo.map.Nodes;
+import fr.esiea.glpoo.map.Position;
 
 public class SimpleForme implements Forme {
 
@@ -34,7 +35,7 @@ public class SimpleForme implements Forme {
 		case rectangle:
 			for (int x = positionx; x <= positionx1; x++) {
 				for (int y = positiony; y <= positiony1; y++) {
-					map.getNodeByPos(y, x).setColor(FormeType.rectangle.couleur);
+					map.getNodeByPos(y, x).addColor(FormeType.rectangle.couleur, true);
 				}
 			}
 			break;
@@ -45,7 +46,7 @@ public class SimpleForme implements Forme {
 					// formulae equation circle
 					if ((Math.pow(positionx - x, 2) + Math.pow(positiony - y, 2)) <= Math.pow(dist, 2)) {
 						System.out.println("onemore");
-						map.getNodeByPos(y, x).setColor(FormeType.cercle.couleur);
+						map.getNodeByPos(y, x).addColor(FormeType.cercle.couleur, true);
 					}
 				}
 			}
@@ -55,57 +56,78 @@ public class SimpleForme implements Forme {
 			for (int y = positiony; y < dist + positiony; y++) {
 				for (int x = positionx; x < positionx + y - positiony + 1; x++) {
 					if (map.existingNode(y, x)) {
-						map.getNodeByPos(y, x).setColor(FormeType.triangle.couleur);
+						map.getNodeByPos(y, x).addColor(FormeType.triangle.couleur, true);
 					}
 				}
 			}
 			break;
 
 		case traine:
-			if (positionx1 - positionx != 0) {
-				float coef = (float)((float)(positiony1 - positiony) / (float)(positionx1 - positionx));
-				int posIni =  positiony1 - (int)(coef * positionx1);
-				if(positionx < positionx1) {
-					for (int i = positionx; i <= positionx1; i++) {
-						int posY = (int) (coef * i + posIni);
-						for (int j = posY; j< Math.max((int)(coef*(i+1)+posIni),posY); j++)
-						{
-							if (map.existingNode(j, i)) {
-								map.getNodeByPos(j, i).setColor(FormeType.traine.couleur);
-							}
-						}
-						
-					}
-				}
-				else {
-					for (int i = positionx; i >= positionx1; i--) {
-						int posY = (int) (coef * i + posIni);
-						for (int j = posY; j< Math.max((int)(coef*(i+1)+posIni),posY); j++)
-						{
-							if (map.existingNode(j, i)) {
-								map.getNodeByPos(j, i).setColor(FormeType.traine.couleur);
-							}
-						}
-						
-					}
-				}
-			} else {
-				if (positiony < positiony1) {
-					for (int i = positiony; i < positiony1; i++) {
-						map.getNodeByPos(i, positionx).setColor(FormeType.traine.couleur);
-					}
-				}
-				else {
-					for (int i = positiony1; i < positiony; i++)
-					{
-						map.getNodeByPos(i, positionx).setColor(FormeType.traine.couleur);
-					}
-				}
-			}
-
+			Position pos1 = new Position(positionx, positiony);
+			Position pos2 = new Position(positionx1, positiony1);
+			SimpleForme.createLineOnMat(map, pos1, pos2, FormeType.traine.couleur);
 		}
 	}
 
+	public static void createLineOnMat(Map map, Position pos1, Position pos2, Couleur couleur)
+	{
+		int positionx = pos1.getPositionx();
+		int positionx1 = pos2.getPositionx();
+		int positiony = pos1.getPositiony();
+		int positiony1 = pos2.getPositiony();
+
+		if (positionx1 - positionx != 0) {
+			float coef = (float) ((float) (positiony1 - positiony) / (float) (positionx1 - positionx));
+			int posIni = positiony1 - (int) (coef * positionx1);
+			if (positionx < positionx1) {
+				for (int i = positionx; i <= positionx1; i++) {
+					int posY = (int) (coef * i + posIni);
+					if (positiony < positiony1) {
+						for (int j = posY; j <= Math.max((int) (coef * (i + 1) + posIni), posY); j++) {
+							if (map.existingNode(j, i)) {
+								map.getNodeByPos(j, i).addColor(couleur, true);
+							}
+						}
+					} else {
+						for (int j = Math.min((int) (coef * (i + 1) + posIni), posY); j <= posY; j++) {
+							if (map.existingNode(j, i)) {
+								map.getNodeByPos(j, i).addColor(couleur, true);
+							}
+						}
+					}
+				}
+			} else {
+				for (int i = positionx; i >= positionx1; i--) {
+					int posY = (int) (coef * i + posIni);
+					if (positiony < positiony1) {
+						for (int j = posY; j <= Math.max((int) (coef * (i + 1) + posIni), posY); j++) {
+							if (map.existingNode(j, i)) {
+								map.getNodeByPos(j, i).addColor(couleur, true);
+							}
+						}
+					} else {
+						for (int j = Math.min((int) (coef * (i + 1) + posIni), posY); j <= posY; j++) {
+							if (map.existingNode(j, i)) {
+								map.getNodeByPos(j, i).addColor(couleur, true);
+							}
+						}
+					}
+
+				}
+			}
+		} else {
+			if (positiony < positiony1) {
+				for (int i = positiony; i < positiony1; i++) {
+					map.getNodeByPos(i, positionx).addColor(couleur, true);
+				}
+			} else {
+				for (int i = positiony1; i < positiony; i++) {
+					map.getNodeByPos(i, positionx).addColor(couleur, true);
+				}
+			}
+		}
+	}
+	
 	@Override
 	public int getId() {
 		return this.id;

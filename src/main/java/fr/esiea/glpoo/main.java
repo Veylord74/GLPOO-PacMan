@@ -27,13 +27,14 @@ public class main {
 	public static void main(String[] args) {
 		
 		log.info("Start of new session - User opened PacMan program");
-		Map map = new Map(20,20);
-		Position pos1 = new Position(1,1);
-		Position pos2 = new Position (10,10);
-		Position pos3 = new Position(10,15);
-		List<Position> ListPos= Arrays.asList(pos1,pos2);
+		Map map = new Map(12,12);
+		Position pos1 = new Position(5,6);
+		Position pos2 = new Position (1,10);
+		Position pos3 = new Position(1,1);
+		Position pos4 = new Position (10,1);
+		List<Position> ListPos= Arrays.asList(pos1,pos2,pos3,pos4);
 		
-		map.addPolygone(ListPos);
+		map.addPolygone(ListPos, true);
 		map.displayMapByColor();
 		
 		

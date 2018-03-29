@@ -1,5 +1,8 @@
 package fr.esiea.glpoo.map;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.esiea.formes.Couleur;
 import fr.esiea.glpoo.toolBox.IdGenerator;
 
@@ -19,6 +22,8 @@ public class Nodes {
 	private Status status;
 	
 	private Couleur couleur;
+	
+	private List<Couleur> couleurList;
 	//!!!!!! possible magic number -1 for no neighbor
 	Nodes(int nodeEast, int nodeSouth, int nodeWest, int nodeNorth, int posX, int posY, int id, Couleur couleur)
 	{
@@ -31,10 +36,15 @@ public class Nodes {
 		this.posX = posX;
 		this.posY = posY;
 		this.id = id;
-		this.couleur = couleur;
+		
+		
+		couleurList = new ArrayList<Couleur>();
+		couleurList.add(couleur);
+		this.couleur = couleurList.get(couleurList.size()-1);
 
 	}
 	
+
 	public int getNeighborCount()
 	{
 		return ((getNodeEast()==-1 ? 0:1) + (getNodeNorth()==-1 ? 0:1  )+ (getNodeSouth()==-1 ? 0:1 )+ (getNodeWest()==-1 ? 0:1));
@@ -75,10 +85,25 @@ public class Nodes {
 		return couleur;
 	}
 	
-	public void setColor(Couleur color)
+	public void addColor(Couleur color, boolean setColor)
 	{
-		this.couleur = color;
+		this.couleurList.add(color);
+		if (setColor)
+		{
+			this.setColor(couleurList.size()-1);
+		}
 	}
+	
+	public void setColor(int id)
+	{
+		this.couleur = couleurList.get(id);
+	}
+	
+	public void setLastColor()
+	{
+		this.couleur = couleurList.get(couleurList.size()-1);
+	}
+	
 	
 	public Status getStatus()
 	{

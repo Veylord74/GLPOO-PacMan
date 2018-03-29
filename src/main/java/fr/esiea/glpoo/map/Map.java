@@ -53,10 +53,10 @@ public class Map {
 		this.listFormes.add(forme);
 	}
 	
-	public void addPolygone(List<Position> posList)
+	public void addPolygone(List<Position> posList, boolean filled)
 	{
 		Polynomes forme = new Polynomes(posList);
-		forme.createFormOnMap(this);
+		forme.createFormOnMap(this, filled);
 		this.listFormes.add(forme);
 	}
 	
@@ -138,6 +138,17 @@ public class Map {
 	
 	public Nodes getNodeByPos(int posY, int posX)
 	{
+		if (posX >= this.getSizex() || posY >=this.getSizey() || posY < 0 || posX < 0)
+		{
+			return null;
+		}
+		return mat[posY][posX];
+	}
+	
+	public Nodes getNodeByPos(Position pos)
+	{
+		int posX = pos.getPositionx();
+		int posY = pos.getPositiony();
 		if (posX >= this.getSizex() || posY >=this.getSizey() || posY < 0 || posX < 0)
 		{
 			return null;
