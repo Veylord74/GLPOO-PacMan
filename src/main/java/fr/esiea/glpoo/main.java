@@ -11,7 +11,6 @@ import fr.esiea.glpoo.dao.TirageDao;
 import fr.esiea.formes.FormeType;
 import fr.esiea.formes.SimpleForme;
 import fr.esiea.glpoo.dao.CsvTirageDao;
-import fr.esiea.glpoo.domain.Chat;
 
 import ihm.MenuJFrame;
 import fr.esiea.glpoo.domain.Tirage;

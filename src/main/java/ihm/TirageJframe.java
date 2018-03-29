@@ -19,9 +19,6 @@ import org.apache.log4j.chainsaw.Main;
 
 import com.github.javafaker.Faker;
 
-import fr.esiea.glpoo.domain.CatRace;
-import fr.esiea.glpoo.domain.Genre;
-import fr.esiea.glpoo.domain.SimpleChat;
 
 public class TirageJframe extends JFrame {
 
@@ -32,10 +29,8 @@ public class TirageJframe extends JFrame {
 	public TirageJframe() {
 		setTitle("Tirages euro-milion");
 		setPreferredSize(new Dimension(600, 400));
-		//setDefaultCloseOperation(EXIT_ON_CLOSE); //exits app if press the close cross
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE); //closes the JFrame only
 
-		//tableau.setDefaultRenderer(Genre.class, new GenreRenderer());
 		final JScrollPane scroll = new JScrollPane(tableau);
 
 		// getContentPane().add(tableau.getTableHeader(), BorderLayout.NORTH);

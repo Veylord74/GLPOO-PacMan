@@ -10,10 +10,6 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.chainsaw.Main;
 
 import fr.esiea.glpoo.dao.CsvTirageDao;
-import fr.esiea.glpoo.domain.CatRace;
-import fr.esiea.glpoo.domain.Chat;
-import fr.esiea.glpoo.domain.Genre;
-import fr.esiea.glpoo.domain.SimpleChat;
 import fr.esiea.glpoo.domain.Tirage;
 
 public class TirageModel extends AbstractTableModel {
