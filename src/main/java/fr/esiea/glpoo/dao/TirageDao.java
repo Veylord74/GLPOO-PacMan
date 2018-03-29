@@ -8,4 +8,5 @@ import fr.esiea.glpoo.domain.Tirage;
 public interface TirageDao {
 
 	List<Tirage> findAllTirages();
+	Tirage findRandomTirage();
 }

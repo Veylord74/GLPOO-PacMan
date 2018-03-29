@@ -37,8 +37,10 @@ public class main {
 		map.addPolygone(ListPos, true);
 		map.displayMapByColor();
 		
+		final TirageDao dao = new CsvTirageDao();
+		final Tirage randTirage = dao.findRandomTirage();
 		
-		
+	
 		//IHM
 		
 		/*final MenuJFrame menu = new MenuJFrame();
