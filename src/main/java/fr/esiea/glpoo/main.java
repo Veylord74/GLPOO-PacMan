@@ -27,20 +27,7 @@ public class main {
 	
 	public static void main(String[] args) {
 		
-		log.info("Start of new session - User opened PacMan program");
-	/*exemple to create and draw polygone
-		Map map = new Map(300,300);
-		Position pos2 = new Position (1,250);
-		Position pos3 = new Position(1,1);
-		Position pos4 = new Position (250,1);
-		List<Position> ListPos= Arrays.asList(pos2,pos3,pos4);
-		
-		map.addPolygone(ListPos, true);
-		map.displayMapByColor();
-		
-		Image image = AffichageForme.getImageFromMap(map);
-		AffichageForme.displayImage(image);
-		*/
+		AffichageForme.displayRandomPoly();
 		final TirageDao dao = new CsvTirageDao();
 		final Tirage randTirage = dao.findRandomTirage();
 

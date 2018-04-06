@@ -6,13 +6,18 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import fr.esiea.glpoo.dao.CsvTirageDao;
+import fr.esiea.glpoo.domain.Tirage;
 import fr.esiea.glpoo.map.Map;
+import fr.esiea.glpoo.map.Position;
 
 public class AffichageForme {
 	 
@@ -35,6 +40,25 @@ public class AffichageForme {
 	    }
 	    return image;
 	  }
+	
+	public static void displayRandomPoly()
+	{
+		CsvTirageDao csvTirage = new CsvTirageDao();
+		Tirage tirage = csvTirage.findRandomTirage();
+		Map map = new Map(500,500);
+		Position pos2 = new Position (tirage.getBoules()[0]*10,tirage.getEtoiles()[0]*10);
+		Position pos3 = new Position(tirage.getBoules()[1]*10,tirage.getEtoiles()[1]*10);
+		Position pos4 = new Position (tirage.getBoules()[2]*10, tirage.getBoules()[3]*10);
+		System.out.println("hey");
+		Position pos5 = new Position(tirage.getBoules()[4]*10,tirage.getBoules()[0]*10);
+		List<Position> ListPos= Arrays.asList(pos2,pos3,pos4,pos5);
+		
+		map.addPolygone(ListPos, false);
+		map.displayMapByColor();
+		
+		Image image = AffichageForme.getImageFromMap(map);
+		AffichageForme.displayImage(image);
+	}
 	 
 	  public static void displayImage(Image image)
 	  {
