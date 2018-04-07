@@ -3,6 +3,8 @@ package fr.esiea.formes;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 import java.io.IOException;
@@ -10,6 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -66,8 +69,18 @@ public class AffichageForme {
 		JFrame frame = new JFrame();
 	    JPanel jp = new JPanel();
 	    JLabel img = new JLabel();
+	    JButton button = new JButton("Close Window");
+	    button.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				
+			}
+		});
 	    img.setIcon(icon);
 	    jp.add(img);
+	    jp.add(button);
 	    frame.add(jp);
 	    frame.setSize(new Dimension(1000, 1000));
 	    frame.setVisible(true);

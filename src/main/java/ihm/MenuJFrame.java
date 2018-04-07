@@ -2,6 +2,7 @@ package ihm;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.net.URL;
 import java.util.List;
 import java.util.Random;
@@ -11,6 +12,7 @@ import javax.swing.*;
 
 import org.apache.log4j.Logger;
 
+import fr.esiea.formes.AffichageForme;
 import fr.esiea.glpoo.dao.CsvTirageDao;
 import fr.esiea.glpoo.dao.TirageDao;
 import fr.esiea.glpoo.domain.Tirage;
@@ -69,6 +71,15 @@ public class MenuJFrame extends JFrame {
 			
 			//buttons
 			final JButton bouttonPlay = new JButton(new PlayAction());
+			bouttonPlay.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					AffichageForme.displayRandomPoly();
+
+					
+				}
+			});
 			bouttonPlay.setIcon(new ImageIcon(img));
 			bouttonPlay.setBackground(null);
 			bouttonPlay.setBorder(null);

@@ -83,13 +83,13 @@ public class SimpleForme implements Forme {
 				for (int i = positionx; i <= positionx1; i++) {
 					int posY = (int) (coef * i + posIni);
 					if (positiony < positiony1) {
-						for (int j = posY; j <= Math.max((int) (coef * (i + 1) + posIni), posY); j++) {
+						for (int j = posY; j <= Math.max((int) (coef * (i + 1) + posIni), posY) && j <= positiony1; j++) {
 							if (map.existingNode(j, i)) {
 								map.getNodeByPos(j, i).addColor(couleur, true);
 							}
 						}
 					} else {
-						for (int j = Math.min((int) (coef * (i + 1) + posIni), posY); j <= posY; j++) {
+						for (int j = Math.min((int) (coef * (i + 1) + posIni), posY); j <= posY && j >= positiony1 ; j++) {
 							if (map.existingNode(j, i)) {
 								map.getNodeByPos(j, i).addColor(couleur, true);
 							}
@@ -100,13 +100,13 @@ public class SimpleForme implements Forme {
 				for (int i = positionx; i >= positionx1; i--) {
 					int posY = (int) (coef * i + posIni);
 					if (positiony < positiony1) {
-						for (int j = posY; j <= Math.max((int) (coef * (i + 1) + posIni), posY); j++) {
+						for (int j = Math.min((int) (coef * (i + 1) + posIni), posY); j <= posY; j++) {
 							if (map.existingNode(j, i)) {
 								map.getNodeByPos(j, i).addColor(couleur, true);
 							}
 						}
 					} else {
-						for (int j = Math.min((int) (coef * (i + 1) + posIni), posY); j <= posY; j++) {
+						for (int j = posY; j <= Math.max((int) (coef * (i + 1) + posIni), posY); j++) {
 							if (map.existingNode(j, i)) {
 								map.getNodeByPos(j, i).addColor(couleur, true);
 							}
@@ -114,7 +114,7 @@ public class SimpleForme implements Forme {
 					}
 
 				}
-			}
+		}
 		} else {
 			if (positiony < positiony1) {
 				for (int i = positiony; i < positiony1; i++) {

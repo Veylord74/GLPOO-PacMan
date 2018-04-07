@@ -27,7 +27,6 @@ public class main {
 	
 	public static void main(String[] args) {
 		
-		AffichageForme.displayRandomPoly();
 		final TirageDao dao = new CsvTirageDao();
 		final Tirage randTirage = dao.findRandomTirage();
 
@@ -35,7 +34,6 @@ public class main {
 	
 		//IHM
 		
-		/*final MenuJFrame menu = new MenuJFrame();
 		final MenuJFrame menu = new MenuJFrame();
 		// fullscreen (disable "Size of window" section in MenuJFrame to use fullscreen)
 		menu.setExtendedState(MenuJFrame.MAXIMIZED_BOTH);
@@ -43,12 +41,7 @@ public class main {
 		
 		
 		log.debug("Tirage Euro-million:");
-		System.out.println("mat");
-		Map map = new Map(10,10);
 
-		SimpleForme form = new SimpleForme("lel", 1, 2, FormeType.rectangle, 3, 4);
-		form.createFormOnMap(map);
-		map.displayMapByColor();*/
 		
 		
 		
