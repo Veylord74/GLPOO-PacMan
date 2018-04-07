@@ -67,7 +67,10 @@ public class MenuJFrame extends JFrame {
 			getContentPane().add(menuButton, BorderLayout.SOUTH);
 			
 			// Images for the buttons backgrounds
-			Image img = Toolkit.getDefaultToolkit().getImage("src/main/resources/bkgrndBtn.png");
+			Image img_play = Toolkit.getDefaultToolkit().getImage("src/main/resources/button_play.png");
+			Image img_help = Toolkit.getDefaultToolkit().getImage("src/main/resources/button_help.png");
+			Image img_resl = Toolkit.getDefaultToolkit().getImage("src/main/resources/button_lottery-results.png");
+			
 			
 			//buttons
 			final JButton bouttonPlay = new JButton(new PlayAction());
@@ -80,19 +83,19 @@ public class MenuJFrame extends JFrame {
 					
 				}
 			});
-			bouttonPlay.setIcon(new ImageIcon(img));
+			bouttonPlay.setIcon(new ImageIcon(img_play));
 			bouttonPlay.setBackground(null);
 			bouttonPlay.setBorder(null);
 			menuButton.add(bouttonPlay);
 
 			final JButton bouttonHelp = new JButton(new HelpAction());
-			bouttonHelp.setIcon(new ImageIcon(img));
+			bouttonHelp.setIcon(new ImageIcon(img_help));
 			bouttonHelp.setBackground(null);
 			bouttonHelp.setBorder(null);
 			menuButton.add(bouttonHelp);
 			
 			final JButton bouttonResults = new JButton(new ResultsAction());
-			bouttonResults.setIcon(new ImageIcon(img));
+			bouttonResults.setIcon(new ImageIcon(img_resl));
 			bouttonResults.setBackground(null);
 			bouttonResults.setBorder(null);
 			menuButton.add(bouttonResults);
@@ -121,7 +124,7 @@ public class MenuJFrame extends JFrame {
 
 		public PlayAction() {
 
-			super("PLAY");
+			super("");
 
 		}
 	}
@@ -139,7 +142,7 @@ public class HelpAction extends AbstractAction{
 
 		public HelpAction() {
 
-			super("HELP");
+			super("");
 
 		}
 	}
@@ -179,7 +182,7 @@ public class ResultsAction extends AbstractAction{
 
 	public ResultsAction() {
 
-		super("LOTTERY RESULTS");
+		super("");
 
 	}
 }
