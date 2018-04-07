@@ -74,15 +74,6 @@ public class MenuJFrame extends JFrame {
 			
 			//buttons
 			final JButton bouttonPlay = new JButton(new PlayAction());
-			bouttonPlay.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					AffichageForme.displayRandomPoly();
-
-					
-				}
-			});
 			bouttonPlay.setIcon(new ImageIcon(img_play));
 			bouttonPlay.setBackground(null);
 			bouttonPlay.setBorder(null);
@@ -118,6 +109,7 @@ public class MenuJFrame extends JFrame {
 
 			log.info("Action performed - PLAY");
 
+			AffichageForme.displayRandomPoly();
 			
 
 		}
