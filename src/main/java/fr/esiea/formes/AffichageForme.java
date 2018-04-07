@@ -44,7 +44,7 @@ public class AffichageForme {
 	    return image;
 	  }
 	
-	public static void displayRandomPoly()
+	public static Map createRandomPoly()
 	{
 		CsvTirageDao csvTirage = new CsvTirageDao();
 		Tirage tirage = csvTirage.findRandomTirage();
@@ -52,13 +52,17 @@ public class AffichageForme {
 		Position pos2 = new Position (tirage.getBoules()[0]*10,tirage.getEtoiles()[0]*10);
 		Position pos3 = new Position(tirage.getBoules()[1]*10,tirage.getEtoiles()[1]*10);
 		Position pos4 = new Position (tirage.getBoules()[2]*10, tirage.getBoules()[3]*10);
-		System.out.println("hey");
 		Position pos5 = new Position(tirage.getBoules()[4]*10,tirage.getBoules()[0]*10);
 		List<Position> ListPos= Arrays.asList(pos2,pos3,pos4,pos5);
 		
 		map.addPolygone(ListPos, false);
-		map.displayMapByColor();
-		
+		return map;
+	}
+	
+	
+	public static void displayRandomPoly()
+	{
+		Map map = createRandomPoly();
 		Image image = AffichageForme.getImageFromMap(map);
 		AffichageForme.displayImage(image);
 	}
@@ -69,18 +73,47 @@ public class AffichageForme {
 		JFrame frame = new JFrame();
 	    JPanel jp = new JPanel();
 	    JLabel img = new JLabel();
-	    JButton button = new JButton("Close Window");
-	    button.addActionListener(new ActionListener() {
+	    JButton buttonClose = new JButton("Close Window");
+	    buttonClose.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
+			    System.out.println("hey");
+
+				
+			}
+		});
+	    JButton buttonPoly = new JButton("new Poly");
+	    buttonPoly.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			    System.out.println("hey");
+
+				Map mapp = createRandomPoly();
+				System.out.println(mapp != null);
+			    img.setIcon(new ImageIcon(getImageFromMap(mapp)));
+				frame.revalidate();
+				frame.repaint();
+				
+			}
+		});
+	    JButton buttonCircle = new JButton("new circle");
+	    buttonPoly.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.revalidate();
+				frame.repaint();
 				
 			}
 		});
 	    img.setIcon(icon);
 	    jp.add(img);
-	    jp.add(button);
+	    jp.add(buttonClose);
+	    jp.add(buttonCircle);
+	    jp.add(buttonPoly);
 	    frame.add(jp);
 	    frame.setSize(new Dimension(1000, 1000));
 	    frame.setVisible(true);
