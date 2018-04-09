@@ -3,6 +3,7 @@ package ihm;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
@@ -20,7 +21,12 @@ import org.apache.log4j.chainsaw.Main;
 import com.github.javafaker.Faker;
 
 
+
 public class TirageJframe extends JFrame {
+	
+	//size of window
+	private static final int WIDTH = 800;
+	private static final int HEIGHT = 600;
 
 	private static final Logger log = Logger.getLogger(Main.class);
 	TirageModel model = new TirageModel();
@@ -28,8 +34,11 @@ public class TirageJframe extends JFrame {
 
 	public TirageJframe() {
 		setTitle("Tirages euro-milion");
-		setPreferredSize(new Dimension(600, 400));
+		setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE); //closes the JFrame only
+		
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		setLocation(dim.width/2-WIDTH/2, dim.height/2-HEIGHT/2);
 
 		final JScrollPane scroll = new JScrollPane(tableau);
 

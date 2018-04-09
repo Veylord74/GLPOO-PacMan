@@ -9,6 +9,7 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 import org.apache.log4j.Logger;
 
@@ -34,7 +35,8 @@ public class MenuJFrame extends JFrame {
 	    }
 	}
         
-	final String AnimatedImage = "src/main/resources/PM2.jpg";
+	//final String AnimatedImage = "src/main/resources/PM2.jpg";
+	final String AnimatedImage = "src/main/resources/PM.gif";
 	//final String path = "src/test/resources/chats.csv";
 	
 	public MenuJFrame() {
@@ -64,6 +66,7 @@ public class MenuJFrame extends JFrame {
 			final JPanel menuButton = new JPanel();
 			Color black = new Color(0, 0, 0);
 			menuButton.setBackground(black);
+			menuButton.setBorder(new EmptyBorder(10, 10, 10, 10));
 			getContentPane().add(menuButton, BorderLayout.SOUTH);
 			
 			// Images for the buttons backgrounds
@@ -75,20 +78,23 @@ public class MenuJFrame extends JFrame {
 			//buttons
 			final JButton bouttonPlay = new JButton(new PlayAction());
 			bouttonPlay.setIcon(new ImageIcon(img_play));
-			bouttonPlay.setBackground(null);
+			bouttonPlay.setBackground(black);
 			bouttonPlay.setBorder(null);
+			bouttonPlay.setBorder(new EmptyBorder(0, 10, 0, 10));
 			menuButton.add(bouttonPlay);
 
-			final JButton bouttonHelp = new JButton(new HelpAction());
+			/*final JButton bouttonHelp = new JButton(new HelpAction());
 			bouttonHelp.setIcon(new ImageIcon(img_help));
-			bouttonHelp.setBackground(null);
+			bouttonHelp.setBackground(black);
 			bouttonHelp.setBorder(null);
-			menuButton.add(bouttonHelp);
+			bouttonHelp.setBorder(new EmptyBorder(0, 10, 0, 10));
+			menuButton.add(bouttonHelp);*/
 			
 			final JButton bouttonResults = new JButton(new ResultsAction());
 			bouttonResults.setIcon(new ImageIcon(img_resl));
-			bouttonResults.setBackground(null);
+			bouttonResults.setBackground(black);
 			bouttonResults.setBorder(null);
+			bouttonResults.setBorder(new EmptyBorder(0, 10, 0, 10));
 			menuButton.add(bouttonResults);
 			
 			
@@ -98,7 +104,6 @@ public class MenuJFrame extends JFrame {
 		catch (Exception e) {
             e.printStackTrace();
         }
-		
 		
 	}
 	
