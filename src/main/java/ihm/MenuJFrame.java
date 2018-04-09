@@ -88,12 +88,12 @@ public class MenuJFrame extends JFrame {
 			bouttonPlay.setBorder(new EmptyBorder(0, 10, 0, 10));
 			menuButton.add(bouttonPlay);
 
-			/*final JButton bouttonHelp = new JButton(new HelpAction());
+			final JButton bouttonHelp = new JButton(new HelpAction());
 			bouttonHelp.setIcon(new ImageIcon(img_help));
 			bouttonHelp.setBackground(black);
 			bouttonHelp.setBorder(null);
 			bouttonHelp.setBorder(new EmptyBorder(0, 10, 0, 10));
-			menuButton.add(bouttonHelp);*/
+			menuButton.add(bouttonHelp);
 			
 			final JButton bouttonResults = new JButton(new ResultsAction());
 			bouttonResults.setIcon(new ImageIcon(img_resl));
@@ -148,6 +148,9 @@ public class HelpAction extends AbstractAction{
 
 			log.info("Action performed - HELP");
 
+			//IHM
+			final HelpJFrame helpJFrame = new HelpJFrame();
+			helpJFrame.setVisible(true);
 			
 
 		}
