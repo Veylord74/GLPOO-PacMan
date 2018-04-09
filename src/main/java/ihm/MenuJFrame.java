@@ -1,6 +1,11 @@
 package ihm;
 
 import java.awt.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.applet.Applet;
+import java.applet.AudioClip;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
@@ -107,14 +112,24 @@ public class MenuJFrame extends JFrame {
 		
 	}
 	
+	
+	
 	public class PlayAction extends AbstractAction{
 		
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 
 			log.info("Action performed - PLAY");
+				URL url_1 = getClass().getClassLoader().getResource("pacman_beginning.wav");
+				AudioClip ac = Applet.newAudioClip(url_1);
+
+				ac.play();
+				System.out.println();
+
+
 
 			AffichageForme.displayRandomPoly();
+			
 			
 
 		}
